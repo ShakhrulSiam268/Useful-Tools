@@ -10,15 +10,15 @@ def process_video(video_path):
 	count = 0
 	ignore = 5  # Drop Number of Frame
 
-	while(video.isOpened()):
+	while video.isOpened():
 		for i in range(ignore):
-			ret,frame=video.read()
+			ret, frame = video.read()
 		
 		if ret:	
-			#frame=cv2.resize(frame,(500,500))    # Resize if needed
-			cv2.imwrite(output_dir+str(count)+'.jpg',frame)
+			# frame=cv2.resize(frame,(500,500))    # Resize if needed
+			cv2.imwrite(output_dir+str(count)+'.jpg', frame)
 			count += 1
-			cv2.imshow('Frame',frame)
+			cv2.imshow('Frame', frame)
 		key = cv2.waitKey(1)
 		if key == ord('q'):
 			break
@@ -26,7 +26,6 @@ def process_video(video_path):
 	video.release()
 	cv2.destroyAllWindows()
 	print('Saved {} Images Successfully...'.format(count))
-
 
 
 video_path = 'sample_video.mp4'    # path of video file
